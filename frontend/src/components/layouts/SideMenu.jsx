@@ -19,6 +19,7 @@ function SideMenu({activeMenu}) {
    };
 
    const handelLogout = () => {
+    clearUser();
     localStorage.clear();
     navigate("/login");
    };
