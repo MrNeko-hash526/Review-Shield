@@ -4,6 +4,7 @@ export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true); // Add loading state
 
     // Load user from localStorage when component mounts
     useEffect(() => {
@@ -11,6 +12,7 @@ const UserProvider = ({ children }) => {
         if (storedUser) {
             setUser(JSON.parse(storedUser));
         }
+        setLoading(false); // Set loading to false after checking
     }, []);
 
     const updateUser = (userData) => {
@@ -25,7 +27,7 @@ const UserProvider = ({ children }) => {
     };
 
     return (
-        <UserContext.Provider value={{ user, updateUser, clearUser }}>
+        <UserContext.Provider value={{ user, updateUser, clearUser, loading }}>
             {children}
         </UserContext.Provider>
     );

@@ -21,7 +21,7 @@ function SideMenu({activeMenu}) {
    const handelLogout = () => {
     clearUser();
     localStorage.clear();
-    navigate("/login");
+    navigate("/login", { replace: true }); // This replaces the current entry in history
    };
    
   return (

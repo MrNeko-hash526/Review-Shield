@@ -12,7 +12,7 @@ import Income from "./pages/Dashboard/Income";
 import Expense from "./pages/Dashboard/Expense";
 import UserProvider from "./context/UserContext";
 import { Toaster } from "react-hot-toast";
-import PrivateRoute from "./routes/PrivateRoute"; // ✅ import this
+import PrivateRoute from "./routes/PrivateRoute";
 
 function App() {
   return (
@@ -20,11 +20,17 @@ function App() {
       <div>
         <Router>
           <Routes>
-            <Route path="/" element={<Root />} />
+            {/* Protect the root route */}
+            <Route
+              path="/"
+              element={
+                <PrivateRoute>
+                  <Home />
+                </PrivateRoute>
+              }
+            />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
-
-            {/* ✅ protected routes */}
             <Route
               path="/dashboard"
               element={
@@ -66,9 +72,3 @@ function App() {
 }
 
 export default App;
-
-// ⬇️ Keeps auto redirect logic on root
-const Root = () => {
-  const isAuthenticated = !!localStorage.getItem("token");
-  return <Navigate to={isAuthenticated ? "/dashboard" : "/login"} replace />;
-};
