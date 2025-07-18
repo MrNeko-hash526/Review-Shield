@@ -1,5 +1,5 @@
 import React from 'react';
-import { HiStar, HiCheckCircle, HiQuoteLeft } from 'react-icons/hi2';
+import { HiStar, HiCheckCircle } from 'react-icons/hi2';
 
 const Testimonials = () => {
   const testimonials = [
@@ -134,7 +134,7 @@ const Testimonials = () => {
                 </div>
                 
                 <div className="relative">
-                  <HiQuoteLeft className="absolute -top-2 -left-2 w-8 h-8 text-blue-200" />
+                  <div className="absolute -top-2 -left-2 w-8 h-8 text-blue-200 text-4xl font-bold leading-none">"</div>
                   <p className="text-gray-600 italic pl-6 leading-relaxed">
                     "{testimonial.content}"
                   </p>
