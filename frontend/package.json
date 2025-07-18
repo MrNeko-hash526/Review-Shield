@@ -1,13 +1,13 @@
 {
-  "name": "frontend",
+  "name": "Expense Tracker",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "start": "react-scripts start",
     "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.10",
