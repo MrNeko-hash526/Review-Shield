@@ -1,245 +1,143 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { HiStar, HiArrowLeft, HiArrowRight } from 'react-icons/hi2'
-import { HiShieldCheck } from 'react-icons/hi'
-import { FaQuoteLeft } from 'react-icons/fa'
+import React from 'react';
+import { HiStar, HiCheckCircle, HiQuoteLeft } from 'react-icons/hi2';
 
 const Testimonials = () => {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0)
-
   const testimonials = [
     {
       id: 1,
       name: "Sarah Johnson",
-      position: "Marketing Director",
-      company: "TechStart Solutions",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b9ad88c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      role: "E-commerce Manager",
+      company: "TechMart Solutions",
       rating: 5,
-      content: "Review Shield has transformed how we manage our online reputation. The platform is intuitive, and the insights we get are invaluable. Our review response time has improved by 75%.",
-      results: "75% faster response time"
+      content: "Review Shield has revolutionized how we handle customer reviews. The AI analysis is incredibly accurate and has helped us identify fake reviews that could have damaged our reputation. The detailed reports make it easy to take action.",
+      image: "/api/placeholder/60/60"
     },
     {
       id: 2,
       name: "Michael Chen",
-      position: "CEO",
-      company: "Urban Eats Restaurant Group",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      role: "Product Manager",
+      company: "Digital Marketplace Inc.",
       rating: 5,
-      content: "As a restaurant owner, managing reviews across multiple platforms was a nightmare. Review Shield centralized everything and helped us increase our average rating from 3.2 to 4.8 stars.",
-      results: "Increased rating to 4.8 stars"
+      content: "As someone who manages multiple product lines, Review Shield has been a game-changer. The visual analytics dashboard provides clear insights, and the Excel export feature makes reporting to stakeholders effortless.",
+      image: "/api/placeholder/60/60"
     },
     {
       id: 3,
       name: "Emily Rodriguez",
-      position: "Operations Manager",
-      company: "Wellness Spa & Retreat",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      role: "Marketing Director",
+      company: "Consumer Goods Co.",
       rating: 5,
-      content: "The analytics dashboard gives us incredible insights into customer sentiment. We've been able to identify and fix issues before they become bigger problems. Highly recommended!",
-      results: "Prevented 90% of potential issues"
+      content: "The authenticity analysis is spot-on. We've been using Review Shield for 6 months now, and it's helped us maintain the integrity of our review system. The AI detection catches things we would have missed.",
+      image: "/api/placeholder/60/60"
     },
     {
       id: 4,
       name: "David Thompson",
-      position: "Store Manager",
-      company: "AutoCare Plus",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      role: "Business Owner",
+      company: "Online Retail Store",
       rating: 5,
-      content: "Review Shield's automated response suggestions have saved us countless hours. The AI-powered insights help us craft perfect responses that actually convert negative reviews into positive outcomes.",
-      results: "Saved 20+ hours per week"
+      content: "Review Shield gives me confidence in my purchasing decisions. The platform is user-friendly, and the detailed analysis helps me understand which products truly deserve their ratings.",
+      image: "/api/placeholder/60/60"
     },
     {
       id: 5,
-      name: "Lisa Parker",
-      position: "Marketing Manager",
-      company: "Boutique Hotel Chain",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      name: "Lisa Park",
+      role: "Quality Assurance Lead",
+      company: "Brand Protection Agency",
       rating: 5,
-      content: "The real-time monitoring feature is a game-changer. We get instant notifications and can respond to reviews while the experience is still fresh in our guests' minds.",
-      results: "Real-time response capability"
+      content: "The multi-platform support is excellent. We can analyze reviews from different e-commerce sites using one tool. The API integration has streamlined our workflow significantly.",
+      image: "/api/placeholder/60/60"
     },
     {
       id: 6,
-      name: "Robert Kim",
-      position: "Owner",
-      company: "Digital Marketing Agency",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      name: "James Wilson",
+      role: "Data Analyst",
+      company: "Market Research Firm",
       rating: 5,
-      content: "We use Review Shield for all our clients. The white-label solution allows us to offer review management as part of our service package. It's been a huge revenue driver.",
-      results: "30% increase in client retention"
+      content: "The statistical analysis and color-coded reporting make it easy to present findings to clients. Review Shield has become an essential tool in our market research toolkit.",
+      image: "/api/placeholder/60/60"
     }
-  ]
+  ];
 
   const stats = [
-    { number: "10,000+", label: "Happy Customers", icon: "👥" },
-    { number: "500K+", label: "Reviews Managed", icon: "⭐" },
-    { number: "4.9/5", label: "Customer Satisfaction", icon: "😊" },
-    { number: "99.9%", label: "Platform Uptime", icon: "🚀" }
-  ]
-
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-  }
-
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-  }
+    { number: "10,000+", label: "Reviews Analyzed" },
+    { number: "500+", label: "Happy Customers" },
+    { number: "95%", label: "Accuracy Rate" },
+    { number: "24/7", label: "Support Available" }
+  ];
 
   const renderStars = (rating) => {
     return Array.from({ length: 5 }, (_, i) => (
       <HiStar
         key={i}
-        className={`h-5 w-5 ${i < rating ? 'text-yellow-400' : 'text-gray-300'}`}
+        className={`w-5 h-5 ${i < rating ? 'text-yellow-400' : 'text-gray-300'}`}
       />
-    ))
-  }
+    ));
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="bg-gray-50 min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-[#6872ff] to-[#4c56d9] py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center text-white">
-            <h1 className="text-5xl font-bold mb-6">What Our Clients Say</h1>
-            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-              Don't just take our word for it. Here's what businesses are saying about Review Shield.
+      <section className="bg-gradient-to-br from-blue-600 to-purple-600 text-white py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-5xl font-bold mb-6">What Our Customers Say</h1>
+            <p className="text-xl text-gray-200 mb-8">
+              Discover how Review Shield has helped businesses and consumers make better decisions
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Testimonial Carousel */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 relative">
-            <FaQuoteLeft className="h-12 w-12 text-[#6872ff] opacity-20 absolute top-6 left-6" />
-            
-            <div className="text-center">
-              <div className="mb-6">
-                <img
-                  src={testimonials[currentTestimonial].image}
-                  alt={testimonials[currentTestimonial].name}
-                  className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
-                />
-                <div className="flex justify-center mb-4">
-                  {renderStars(testimonials[currentTestimonial].rating)}
-                </div>
-              </div>
-              
-              <blockquote className="text-xl md:text-2xl text-gray-800 mb-8 leading-relaxed">
-                "{testimonials[currentTestimonial].content}"
-              </blockquote>
-              
-              <div className="text-center">
-                <p className="font-semibold text-gray-900 text-lg">
-                  {testimonials[currentTestimonial].name}
-                </p>
-                <p className="text-[#6872ff] font-medium">
-                  {testimonials[currentTestimonial].position}
-                </p>
-                <p className="text-gray-600">
-                  {testimonials[currentTestimonial].company}
-                </p>
-                <div className="mt-4 inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium">
-                  <HiShieldCheck className="h-4 w-4 mr-2" />
-                  {testimonials[currentTestimonial].results}
-                </div>
-              </div>
-            </div>
-
-            {/* Navigation Buttons */}
-            <button
-              onClick={prevTestimonial}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors"
-            >
-              <HiArrowLeft className="h-6 w-6 text-gray-600" />
-            </button>
-            <button
-              onClick={nextTestimonial}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-gray-50 transition-colors"
-            >
-              <HiArrowRight className="h-6 w-6 text-gray-600" />
-            </button>
-
-            {/* Dots Indicator */}
-            <div className="flex justify-center mt-8 space-x-2">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-colors ${
-                    index === currentTestimonial ? 'bg-[#6872ff]' : 'bg-gray-300'
-                  }`}
-                />
-              ))}
-            </div>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Trusted by Thousands of Businesses
-            </h2>
-            <p className="text-xl text-gray-600">
-              See the impact Review Shield has made across industries
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-4 gap-8">
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center p-6 bg-gray-50 rounded-xl">
-                <div className="text-4xl mb-4">{stat.icon}</div>
-                <div className="text-3xl font-bold text-[#6872ff] mb-2">{stat.number}</div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
+              <div key={index} className="text-center">
+                <div className="text-4xl font-bold text-blue-600 mb-2">{stat.number}</div>
+                <div className="text-gray-600">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* All Testimonials Grid */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Testimonials Grid */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              More Success Stories
-            </h2>
-            <p className="text-xl text-gray-600">
-              Read what our customers have to say about their experience
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Customer Success Stories</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              See how Review Shield has transformed the way businesses and consumers approach online reviews
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
-                <div className="flex items-center mb-4">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover mr-4"
-                  />
+              <div key={testimonial.id} className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                    <span className="text-lg font-bold text-gray-600">
+                      {testimonial.name.split(' ').map(n => n[0]).join('')}
+                    </span>
+                  </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                    <p className="text-sm text-gray-600">{testimonial.position}</p>
-                    <p className="text-sm text-[#6872ff]">{testimonial.company}</p>
+                    <h3 className="font-bold text-gray-900">{testimonial.name}</h3>
+                    <p className="text-sm text-gray-600">{testimonial.role}</p>
+                    <p className="text-sm text-blue-600">{testimonial.company}</p>
                   </div>
                 </div>
                 
-                <div className="flex mb-4">
+                <div className="flex items-center gap-1 mb-4">
                   {renderStars(testimonial.rating)}
                 </div>
                 
-                <p className="text-gray-700 mb-4 line-clamp-4">
-                  "{testimonial.content}"
-                </p>
-                
-                <div className="flex items-center text-sm text-green-600 font-medium">
-                  <HiShieldCheck className="h-4 w-4 mr-1" />
-                  {testimonial.results}
+                <div className="relative">
+                  <HiQuoteLeft className="absolute -top-2 -left-2 w-8 h-8 text-blue-200" />
+                  <p className="text-gray-600 italic pl-6 leading-relaxed">
+                    "{testimonial.content}"
+                  </p>
                 </div>
               </div>
             ))}
@@ -247,33 +145,61 @@ const Testimonials = () => {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="bg-gradient-to-r from-[#6872ff] to-[#4c56d9] py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Join Our Success Stories?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Start managing your reviews like a pro and see the difference Review Shield can make for your business.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              to="/analyzer"
-              className="bg-white text-[#6872ff] px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg hover:shadow-xl text-center"
-            >
-              Start Free Trial
-            </Link>
-            <Link 
-              to="/contact"
-              className="bg-transparent text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:bg-opacity-10 transition-colors duration-200 border-2 border-white text-center"
-            >
-              Schedule Demo
-            </Link>
+      {/* Trust Indicators */}
+      <section className="bg-white py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Trusted by Leading Brands</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Join thousands of businesses that trust Review Shield for authentic review analysis
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center p-6">
+              <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <HiCheckCircle className="w-8 h-8 text-green-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">99.9% Uptime</h3>
+              <p className="text-gray-600">Reliable service you can count on</p>
+            </div>
+            
+            <div className="text-center p-6">
+              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <HiCheckCircle className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">GDPR Compliant</h3>
+              <p className="text-gray-600">Your data is safe and secure</p>
+            </div>
+            
+            <div className="text-center p-6">
+              <div className="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <HiCheckCircle className="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">24/7 Support</h3>
+              <p className="text-gray-600">Expert help when you need it</p>
+            </div>
           </div>
         </div>
       </section>
-    </div>
-  )
-}
 
-export default Testimonials
+      {/* CTA Section */}
+      <section className="bg-gray-900 text-white py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold mb-6">Join Our Success Stories</h2>
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            Start your journey with Review Shield today and see the difference authentic review analysis can make
+          </p>
+          <a
+            href="/analyzer"
+            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all transform hover:scale-105 inline-flex items-center gap-2"
+          >
+            Start Free Analysis
+          </a>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Testimonials;
