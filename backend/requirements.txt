@@ -9,7 +9,6 @@ transformers
 pandas
 numpy
 scikit-learn
-
 python-dotenv
 Jinja2
 MarkupSafe
@@ -30,11 +29,10 @@ networkx
 certifi
 charset-normalizer
 idna 
-
+gunicorn
 trio
 trio-websocket 
 wsproto
-
 PySocks 
 sniffio
 sortedcontainers 
