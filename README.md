@@ -69,6 +69,18 @@ A sophisticated web application using advanced machine learning to analyze produ
 ![React](https://img.shields.io/badge/React-18.0+-blue)
 ![Flask](https://img.shields.io/badge/Flask-2.0+-red)
 
+## 📸 Screenshots
+
+### 🔍 Homepage
+![Homepage](./screenshots/homepage.png)
+
+### 📊 Analysis Results
+![Results Page](./screenshots/results.png)
+
+### 📈 Visual Analytics
+![Charts](./screenshots/charts.png)
+
+
 ## ⚡ Key Features
 
 - **🧠 AI-Powered Analysis**: Fine-tuned DistilBERT model for review authenticity prediction
